@@ -49,6 +49,9 @@ class MainPage(webapp2.RequestHandler):
             self.response.write('''<span class="l">中考已经过去了</span><span class="rxxl">''' + str(pastdays) + '''</span><span class="l">天</span><br>
 <span class="l">直升考已经过去了</span><span class="rxxl">''' + str((chinatime-downtime).days) + '''</span><span class="l">天</span>''')
         self.response.write('''<br><img src="https://cloud.google.com/appengine/images/appengine-noborder-120x30.gif" alt="Powered by Google App Engine" />
+<div style="font-size:xx-small">
+<a target="_blank" href="https://github.com/zsdtj/szzk2015countdown">源码见此</a>
+</div>
 </div>
 </body>
 </html>''')
