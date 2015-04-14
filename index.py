@@ -9,9 +9,9 @@ class MainPage(webapp2.RequestHandler):
         landtime = datetime(2015,4,26,12) #hour is guessed
         dietime = datetime(2015,6,20,9)
         reborntime = datetime(2015,6,21,17,30)
-        leftdays = (dietime-chinatime).days
-        reborning = (reborntime-chinatime).days
-        pastdays = (chinatime-reborntime).days
+        leftdays = dietime-chinatime
+        reborning = reborntime-chinatime
+        pastdays = chinatime-reborntime
         self.response.headers['Content-Type'] = 'text/html'
         self.response.write('''<!DOCTYPE html>
 <html>
@@ -34,28 +34,38 @@ ga('send', 'pageview');
 <body>
 <div style="text-align:center">''')
         if (helicoptertime-chinatime).days > 0: #leftdays to zhisheng
-            self.response.write('''<span class="l">距离直升考还有</span><span class="rxxl">''' + str((helicoptertime-chinatime).days) + '''</span><span class="l">天</span><br>
-<span class="l">距离直升考结束还有</span><span class="rxxl">''' + str((landtime-chinatime).days) + '''</span><span class="l">天</span><br>
-<span class="l">距离中考还有</span><span class="rxxl">''' + str(leftdays) + '''</span><span class="l">天</span><br>
-<span class="l">距离中考结束还有</span><span class="rxxl">''' + str(reborning) + '''</span><span class="l">天</span>''')
+            self.response.write('''<span class="l">距离直升考还有</span><span class="rxxl">''' + str((helicoptertime-chinatime).days) + '''</span><span class="l">天</span><span class="rxxl">''' + str((helicoptertime-chinatime).seconds) + '''</span><span class="l">秒</span>
+<br>
+<span class="l">距离直升考结束还有</span><span class="rxxl">''' + str((landtime-chinatime).days) + '''</span><span class="l">天</span><span class="rxxl">''' + str((landtime-chinatime).seconds) + '''</span><span class="l">秒</span>
+<br>
+<span class="l">距离中考还有</span><span class="rxxl">''' + str((leftdays).days) + '''</span><span class="l">天</span><span class="rxxl">''' + str((leftdays).seconds) + '''</span><span class="l">秒</span>
+<br>
+<span class="l">距离中考结束还有</span><span class="rxxl">''' + str((reborning).days) + '''</span><span class="l">天</span><span class="rxxl">''' + str((reborning).seconds) + '''</span><span class="l">秒</span>''')
         elif (chinatime-landtime).days < 0: #pastdays to zhisheng
+            self.response.write('''<span class="rxxl">祝大家取得好成绩！</span>
+<br>
+<span class="l">距离中考还有</span><span class="rxxl">''' + str((leftdays).days) + '''</span><span class="l">天</span><span class="rxxl">''' + str((leftdays).seconds) + '''</span><span class="l">秒</span>
+<br>
+<span class="l">距离中考结束还有</span><span class="rxxl">''' + str((reborning).days) + '''</span><span class="l">天</span><span class="rxxl">''' + str((reborning).seconds) + '''</span><span class="l">秒</span>''')
+        elif (leftdays).days > 0:
+            self.response.write('''<span class="l">距离中考还有</span><span class="rxxl">''' + str((leftdays).days) + '''</span><span class="l">天</span><span class="rxxl">''' + str((leftdays).seconds) + '''</span><span class="l">秒</span>
+<br>
+<span class="l">距离中考结束还有</span><span class="rxxl">''' + str((reborning).days) + '''</span><span class="l">天</span><span class="rxxl">''' + str((reborning).seconds) + '''</span><span class="l">秒</span>
+<br>
+<span class="l">直升考已经过去了</span><span class="rxxl">''' + str((chinatime-landtime).days) + '''</span><span class="l">天</span><span class="rxxl">''' + str((chinatime-landtime).seconds) + '''</span><span class="l">秒</span>''')
+        elif (pastdays).days < 0:
             self.response.write('''<span class="rxxl">祝大家取得好成绩！</span><br>
-<span class="l">距离中考还有</span><span class="rxxl">''' + str(leftdays) + '''</span><span class="l">天</span><br>
-<span class="l">距离中考结束还有</span><span class="rxxl">''' + str(reborning) + '''</span><span class="l">天</span>''')
-        elif leftdays > 0:
-            self.response.write('''<span class="l">距离中考还有</span><span class="rxxl">''' + str(leftdays) + '''</span><span class="l">天</span><br>
-<span class="l">距离中考结束还有</span><span class="rxxl">''' + str(reborning) + '''</span><span class="l">天</span>
-<span class="l">直升考已经过去了</span><span class="rxxl">''' + str((chinatime-landtime).days) + '''</span><span class="l">天</span>''')
-        elif pastdays < 0:
-            self.response.write('''<span class="rxxl">祝大家取得好成绩！</span><br>
-<span class="l">距离中考结束还有</span><span class="rxxl">''' + str(reborning) + '''</span><span class="l">天</span><br>
-<span class="l">直升考已经过去了</span><span class="rxxl">''' + str((chinatime-landtime).days) + '''</span><span class="l">天</span>''')
-        elif pastdays == 0:
-            self.response.write('''<span class="rxxl">考完了！</span><br>
-<span class="l">直升考已经过去了</span><span class="rxxl">''' + str((chinatime-landtime).days) + '''</span><span class="l">天</span>''')
+<span class="l">距离中考结束还有</span><span class="rxxl">''' + str((reborning).days) + '''</span><span class="l">天</span><span class="rxxl">''' + str((reborning).seconds) + '''</span><span class="l">秒</span>
+<br>
+<span class="l">直升考已经过去了</span><span class="rxxl">''' + str((chinatime-landtime).days) + '''</span><span class="l">天</span><span class="rxxl">''' + str((chinatime-landtime).seconds) + '''</span><span class="l">秒</span>''')
+        elif (pastdays).days == 0:
+            self.response.write('''<span class="rxxl">考完了！</span>
+<br>
+<span class="l">直升考已经过去了</span><span class="rxxl">''' + str((chinatime-landtime).days) + '''</span><span class="l">天</span><span class="rxxl">''' + str((chinatime-landtime).seconds) + '''</span><span class="l">秒</span>''')
         else:
-            self.response.write('''<span class="l">中考已经过去了</span><span class="rxxl">''' + str(pastdays) + '''</span><span class="l">天</span><br>
-<span class="l">直升考已经过去了</span><span class="rxxl">''' + str((chinatime-landtime).days) + '''</span><span class="l">天</span>''')
+            self.response.write('''<span class="l">中考已经过去了</span><span class="rxxl">''' + str((pastdays).days) + '''</span><span class="l">天</span><span class="rxxl">''' + str((pastdays).seconds) + '''</span><span class="l">秒</span>
+<br>
+<span class="l">直升考已经过去了</span><span class="rxxl">''' + str((chinatime-landtime).days) + '''</span><span class="l">天</span><span class="rxxl">''' + str((chinatime-landtime).seconds) + '''</span><span class="l">秒</span>''')
         self.response.write('''<br>
 <div style="font-size:xx-small">
 <a target="_blank" href="https://github.com/zsdtj/sz2015zkcountdown">源码见此</a>
