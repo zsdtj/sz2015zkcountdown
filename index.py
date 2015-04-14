@@ -7,8 +7,8 @@ class MainPage(webapp2.RequestHandler):
         chinatime = datetime.now() + timedelta(hours=+8)
         helicoptertime = datetime(2015,4,25,8) #hour is guessed
         landtime = datetime(2015,4,26,12) #hour is guessed
-        dietime = datetime(2015,6,21,9) #hour is guessed
-        reborntime = datetime(2015,6,22,18) #hour is guessed
+        dietime = datetime(2015,6,20,9)
+        reborntime = datetime(2015,6,21,17,30)
         leftdays = (dietime-chinatime).days
         reborning = (reborntime-chinatime).days
         pastdays = (chinatime-reborntime).days
