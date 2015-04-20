@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# coding: UTF-8
+# -*- coding: UTF-8 -*-
 import webapp2
 from datetime import datetime, timedelta
 class MainPage(webapp2.RequestHandler):
