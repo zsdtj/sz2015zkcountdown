@@ -13,7 +13,8 @@ class MainPage(webapp2.RequestHandler):
         reborning = reborntime-chinatime
         pastdays = chinatime-reborntime
         self.response.headers['Content-Type'] = 'text/html'
-        self.response.write('''<!DOCTYPE html>
+        self.response.write(
+'''<!DOCTYPE html>
 <html>
 <head>
 <meta name=viewport content="width=device-width, initial-scale=1">
@@ -32,29 +33,37 @@ ga('send', 'pageview');
 </script>
 </head>
 <body>
-<div style="text-align:center">''')
+<div style="text-align:center">
+<h1>2015年深圳实验学校<del style="font-size:xx-small">直升考</del>两部联考和<abbr title="深圳市2015年高中阶段学校招生考试">2015年深圳中考</abbr>的倒计时</h1>
+''')
         if (helicoptertime-chinatime).days > 0: #leftdays to zhisheng
-            self.response.write('''<span class="l">距离直升考还有</span><span class="rxxl">''' + str((helicoptertime-chinatime).days) + '''</span><span class="l">天</span><span class="rxxl">''' + str((helicoptertime-chinatime).seconds) + '''</span><span class="l">秒</span>
-<br>''')
-        if -1 < ((chinatime-landtime).days < 0 | -1 < (pastdays).days) < 0 :
-            self.response.write('''<span class="rxxl">祝大家取得好成绩！</span>
-<br>''')
+            self.response.write(
+'''<p class="l">距离直升考还有<span class="rxxl">''' + str((helicoptertime-chinatime).days) + '''</span>天<span class="rxxl">''' + str((helicoptertime-chinatime).seconds) + '''</span>秒</p>''')
+        if -1 < (chinatime-landtime).days < 0 | -1 < (pastdays).days < 0 :
+            self.response.write(
+'''<p class="rxxl">祝大家取得好成绩！</p>
+''')
         if (landtime-chinatime).days > 0: #leftdays to landtime
-            self.response.write('''<span class="l">距离直升考结束还有</span><span class="rxxl">''' + str((landtime-chinatime).days) + '''</span><span class="l">天</span><span class="rxxl">''' + str((landtime-chinatime).seconds) + '''</span><span class="l">秒</span>
-<br>''')
+            self.response.write('''<p class="l">距离直升考结束还有<span class="rxxl">''' + str((landtime-chinatime).days) + '''</span>天<span class="rxxl">''' + str((landtime-chinatime).seconds) + '''</span>秒</p>
+''')
         if (leftdays).days > 0:
-            self.response.write('''<span class="l">距离中考还有</span><span class="rxxl">''' + str((leftdays).days) + '''</span><span class="l">天</span><span class="rxxl">''' + str((leftdays).seconds) + '''</span><span class="l">秒</span>
-<br>''')
+            self.response.write(
+'''<p class="l">距离中考还有<span class="rxxl">''' + str((leftdays).days) + '''</span>天<span class="rxxl">''' + str((leftdays).seconds) + '''</span>秒</p>
+''')
         if (reborning).days > 0:
-            self.response.write('''<span class="l">距离中考结束还有</span><span class="rxxl">''' + str((reborning).days) + '''</span><span class="l">天</span><span class="rxxl">''' + str((reborning).seconds) + '''</span><span class="l">秒</span>
-<br>''')
+            self.response.write(
+'''<p class="l">距离中考结束还有<span class="rxxl">''' + str((reborning).days) + '''</span>天<span class="rxxl">''' + str((reborning).seconds) + '''</span>秒</p>
+''')
         if (pastdays).days > 0:
-            self.response.write('''<span class="l">中考已经过去了</span><span class="rxxl">''' + str((pastdays).days) + '''</span><span class="l">天</span><span class="rxxl">''' + str((pastdays).seconds) + '''</span><span class="l">秒</span>
-<br>''')
+            self.response.write(
+'''<p class="l">中考已经过去了<span class="rxxl">''' + str((pastdays).days) + '''</span>天<span class="rxxl">''' + str((pastdays).seconds) + '''</span>秒</p>
+''')
         if (chinatime-landtime).days > 0:
-            self.response.write('''<span class="l">直升考已经过去了</span><span class="rxxl">''' + str((chinatime-landtime).days) + '''</span><span class="l">天</span><span class="rxxl">''' + str((chinatime-landtime).seconds) + '''</span><span class="l">秒</span>''')
-        self.response.write('''<br>
-<div style="font-size:xx-small">
+            self.response.write(
+'''<p class="l">直升考已经过去了<span class="rxxl">''' + str((chinatime-landtime).days) + '''</span>天<span class="rxxl">''' + str((chinatime-landtime).seconds) + '''</span>秒</p>
+''')
+        self.response.write(
+'''<div style="font-size:xx-small">
 <a target="_blank" href="https://github.com/zsdtj/sz2015zkcountdown">源码见此</a>
 </div>
 </div>
