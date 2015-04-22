@@ -38,29 +38,30 @@ ga('send', 'pageview');
 ''')
         if (helicoptertime-chinatime).days > 0: #leftdays to zhisheng
             self.response.write(
-'''<p class="l">距离直升考还有<span class="rxxl">''' + str((helicoptertime-chinatime).days) + '''</span>天<span class="rxxl">''' + str((helicoptertime-chinatime).seconds) + '''</span>秒</p>''')
+'''<p class="l">距离直升考开始还有<span class="rxxl">''' + str((helicoptertime-chinatime).days) + '''</span>天<span class="rxxl">''' + str(((helicoptertime-chinatime).seconds)//3600) + '''</span>时<span class="rxxl">''' + str((((helicoptertime-chinatime).seconds)//60)%60) + '''</span>分<span class="rxxl">''' + str(((helicoptertime-chinatime).seconds)%60) + '''</span>秒</p>
+''')
         if -1 < (chinatime-landtime).days < 0 | -1 < (pastdays).days < 0 :
             self.response.write(
 '''<p class="rxxl">祝大家取得好成绩！</p>
 ''')
         if (landtime-chinatime).days > 0: #leftdays to landtime
-            self.response.write('''<p class="l">距离直升考结束还有<span class="rxxl">''' + str((landtime-chinatime).days) + '''</span>天<span class="rxxl">''' + str((landtime-chinatime).seconds) + '''</span>秒</p>
+            self.response.write('''<p class="l">距离直升考结束还有<span class="rxxl">''' + str((landtime-chinatime).days) + '''</span>天<span class="rxxl">''' + str(((landtime-chinatime).seconds)//3600) + '''</span>时<span class="rxxl">''' + str((((landtime-chinatime).seconds)//60)%60) + '''</span>分<span class="rxxl">''' + str(((landtime-chinatime).seconds)%60) + '''</span>秒</p>
 ''')
-        if (leftdays).days > 0:
+        if leftdays.days > 0:
             self.response.write(
-'''<p class="l">距离中考还有<span class="rxxl">''' + str((leftdays).days) + '''</span>天<span class="rxxl">''' + str((leftdays).seconds) + '''</span>秒</p>
+'''<p class="l">距离中考开始还有<span class="rxxl">''' + str(leftdays.days) + '''</span>天<span class="rxxl">''' + str((leftdays.seconds)//3600) + '''</span>时<span class="rxxl">''' + str(((leftdays.seconds)//60)%60) + '''</span>分<span class="rxxl">''' + str((leftdays.seconds)%60) + '''</span>秒</p>
 ''')
-        if (reborning).days > 0:
+        if reborning.days > 0:
             self.response.write(
-'''<p class="l">距离中考结束还有<span class="rxxl">''' + str((reborning).days) + '''</span>天<span class="rxxl">''' + str((reborning).seconds) + '''</span>秒</p>
+'''<p class="l">距离中考结束还有<span class="rxxl">''' + str((reborning).days) + '''</span>天<span class="rxxl">''' + str((reborning.seconds)//3600) + '''</span>时<span class="rxxl">''' + str(((reborning.seconds)//60)%60) + '''</span>分<span class="rxxl">''' + str((reborning.seconds)%60) + '''</span>秒</p>
 ''')
-        if (pastdays).days > 0:
+        if pastdays.days > 0:
             self.response.write(
-'''<p class="l">中考已经过去了<span class="rxxl">''' + str((pastdays).days) + '''</span>天<span class="rxxl">''' + str((pastdays).seconds) + '''</span>秒</p>
+'''<p class="l">中考已经过去了<span class="rxxl">''' + str((pastdays).days) + '''</span>天<span class="rxxl">''' + str((pastdays.seconds)//3600) + '''</span>时<span class="rxxl">''' + str(((pastdays.seconds)//60)%60) + '''</span>分<span class="rxxl">''' + str((pastdays.seconds)%60) + '''</span>秒</p>
 ''')
         if (chinatime-landtime).days > 0:
             self.response.write(
-'''<p class="l">直升考已经过去了<span class="rxxl">''' + str((chinatime-landtime).days) + '''</span>天<span class="rxxl">''' + str((chinatime-landtime).seconds) + '''</span>秒</p>
+'''<p class="l">直升考已经过去了<span class="rxxl">''' + str((chinatime-landtime).days) + '''</span>天<span class="rxxl">''' + str(((chinatime-landtime).seconds)//3600) + '''</span>时<span class="rxxl">''' + str((((chinatime-landtime).seconds)//60)%60) + '''</span>分<span class="rxxl">''' + str(((chinatime-landtime).seconds)%60) + '''</span>秒</p>
 ''')
         self.response.write(
 '''<div style="font-size:xx-small">
