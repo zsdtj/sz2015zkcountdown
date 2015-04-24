@@ -4,7 +4,11 @@ import webapp2
 from datetime import datetime, timedelta
 class MainPage(webapp2.RequestHandler):
     def get(self):
-        chinatime = datetime.now() + timedelta(hours=+8)
+        DEBUG = 1
+        if DEBUG == 0 :
+            chinatime = datetime.now() + timedelta(hours=+8)
+        else:
+            chinatime = datetime(2015,6,20,9)
         helicoptertime = datetime(2015,4,25,8) #hour is guessed
         landtime = datetime(2015,4,26,12) #hour is guessed
         dietime = datetime(2015,6,20,9)
@@ -40,7 +44,7 @@ ga('send', 'pageview');
             self.response.write(
 '''<p class="l">距离直升考开始还有<span class="rxxl">''' + str((helicoptertime-chinatime).days) + '''</span>天<span class="rxxl">''' + str(((helicoptertime-chinatime).seconds)//3600) + '''</span>时<span class="rxxl">''' + str((((helicoptertime-chinatime).seconds)//60)%60) + '''</span>分<span class="rxxl">''' + str(((helicoptertime-chinatime).seconds)%60) + '''</span>秒</p>
 ''')
-        if -1 < (chinatime-landtime).days < 0 | -1 < (pastdays).days < 0 :
+        if -1 < (chinatime-landtime).days < 0 | -1 < pastdays.days < 0 :
             self.response.write(
 '''<p class="rxxl">祝大家取得好成绩！</p>
 ''')
@@ -67,7 +71,20 @@ ga('send', 'pageview');
 '''<div style="font-size:xx-small">
 <a target="_blank" href="https://github.com/zsdtj/sz2015zkcountdown">源码见此</a>
 </div>
-</div>
+''')
+        if DEBUG == 1 :
+            self.response.write(
+'''<p>(helicoptertime-chinatime).days: ''' + str((helicoptertime-chinatime).days) + '''</p>
+<p>(chinatime-landtime).days: ''' + str((chinatime-landtime).days) + '''</p>
+<p>pastdays.days: ''' + str(pastdays.days) + '''</p>
+<p>(landtime-chinatime).days: ''' + str((landtime-chinatime).days) + '''</p>
+<p>leftdays.days: ''' + str(leftdays.days) + '''</p>
+<p>reborning.days: ''' + str(reborning.days) + '''</p>
+<p>pastdays.days: ''' + str(pastdays.days) + '''</p>
+<p>(chinatime-landtime).days: ''' + str((chinatime-landtime).days) + '''</p>
+''')
+        self.response.write(
+'''</div>
 </body>
 </html>''')
 
