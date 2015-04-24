@@ -4,11 +4,11 @@ import webapp2
 from datetime import datetime, timedelta
 class MainPage(webapp2.RequestHandler):
     def get(self):
-        DEBUG = 1
+        DEBUG = 0
         if DEBUG == 0 :
             chinatime = datetime.now() + timedelta(hours=+8)
         else:
-            chinatime = datetime(2015,6,20,9)
+            chinatime = datetime(2015,4,26,12,29)
         helicoptertime = datetime(2015,4,25,8) #hour is guessed
         landtime = datetime(2015,4,26,12) #hour is guessed
         dietime = datetime(2015,6,20,9)
@@ -44,26 +44,26 @@ ga('send', 'pageview');
             self.response.write(
 '''<p class="l">距离直升考开始还有<span class="rxxl">''' + str((helicoptertime-chinatime).days) + '''</span>天<span class="rxxl">''' + str(((helicoptertime-chinatime).seconds)//3600) + '''</span>时<span class="rxxl">''' + str((((helicoptertime-chinatime).seconds)//60)%60) + '''</span>分<span class="rxxl">''' + str(((helicoptertime-chinatime).seconds)%60) + '''</span>秒</p>
 ''')
-        if -1 < (chinatime-landtime).days < 0 | -1 < pastdays.days < 0 :
+        if ((-2 <= (chinatime-landtime).days <= -1) and (0 <= (chinatime-helicoptertime).days <= 1)) :
             self.response.write(
 '''<p class="rxxl">祝大家取得好成绩！</p>
 ''')
-        if (landtime-chinatime).days > 0: #leftdays to landtime
+        if (landtime-chinatime).days >= 0: #leftdays to landtime
             self.response.write('''<p class="l">距离直升考结束还有<span class="rxxl">''' + str((landtime-chinatime).days) + '''</span>天<span class="rxxl">''' + str(((landtime-chinatime).seconds)//3600) + '''</span>时<span class="rxxl">''' + str((((landtime-chinatime).seconds)//60)%60) + '''</span>分<span class="rxxl">''' + str(((landtime-chinatime).seconds)%60) + '''</span>秒</p>
 ''')
-        if leftdays.days > 0:
+        if leftdays.days >= 0:
             self.response.write(
 '''<p class="l">距离中考开始还有<span class="rxxl">''' + str(leftdays.days) + '''</span>天<span class="rxxl">''' + str((leftdays.seconds)//3600) + '''</span>时<span class="rxxl">''' + str(((leftdays.seconds)//60)%60) + '''</span>分<span class="rxxl">''' + str((leftdays.seconds)%60) + '''</span>秒</p>
 ''')
-        if reborning.days > 0:
+        if reborning.days >= 0:
             self.response.write(
 '''<p class="l">距离中考结束还有<span class="rxxl">''' + str((reborning).days) + '''</span>天<span class="rxxl">''' + str((reborning.seconds)//3600) + '''</span>时<span class="rxxl">''' + str(((reborning.seconds)//60)%60) + '''</span>分<span class="rxxl">''' + str((reborning.seconds)%60) + '''</span>秒</p>
 ''')
-        if pastdays.days > 0:
+        if pastdays.days >= 0:
             self.response.write(
 '''<p class="l">中考已经过去了<span class="rxxl">''' + str((pastdays).days) + '''</span>天<span class="rxxl">''' + str((pastdays.seconds)//3600) + '''</span>时<span class="rxxl">''' + str(((pastdays.seconds)//60)%60) + '''</span>分<span class="rxxl">''' + str((pastdays.seconds)%60) + '''</span>秒</p>
 ''')
-        if (chinatime-landtime).days > 0:
+        if (chinatime-landtime).days >= 0:
             self.response.write(
 '''<p class="l">直升考已经过去了<span class="rxxl">''' + str((chinatime-landtime).days) + '''</span>天<span class="rxxl">''' + str(((chinatime-landtime).seconds)//3600) + '''</span>时<span class="rxxl">''' + str((((chinatime-landtime).seconds)//60)%60) + '''</span>分<span class="rxxl">''' + str(((chinatime-landtime).seconds)%60) + '''</span>秒</p>
 ''')
@@ -74,14 +74,14 @@ ga('send', 'pageview');
 ''')
         if DEBUG == 1 :
             self.response.write(
-'''<p>(helicoptertime-chinatime).days: ''' + str((helicoptertime-chinatime).days) + '''</p>
+'''<p>(chinatime-helicoptertime).days: ''' + str((chinatime-helicoptertime).days) + '''</p>
 <p>(chinatime-landtime).days: ''' + str((chinatime-landtime).days) + '''</p>
 <p>pastdays.days: ''' + str(pastdays.days) + '''</p>
 <p>(landtime-chinatime).days: ''' + str((landtime-chinatime).days) + '''</p>
 <p>leftdays.days: ''' + str(leftdays.days) + '''</p>
 <p>reborning.days: ''' + str(reborning.days) + '''</p>
 <p>pastdays.days: ''' + str(pastdays.days) + '''</p>
-<p>(chinatime-landtime).days: ''' + str((chinatime-landtime).days) + '''</p>
+<p>(chinatime-landtime).days: ''' + str((chinatime-landtime).days) + '''</p>''' + str(0 <= (chinatime-helicoptertime).days <= 1) + '''
 ''')
         self.response.write(
 '''</div>
