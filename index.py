@@ -8,7 +8,7 @@ class MainPage(webapp2.RequestHandler):
         if DEBUG == 0 :
             chinatime = datetime.now() + timedelta(hours=+8)
         else:
-            chinatime = datetime(2015,4,26,7,29)
+            chinatime = datetime(2015,6,21,9,29)
         helicoptertime = datetime(2015,4,25,8,20)
         landtime = datetime(2015,4,26,9,50)
         dietime = datetime(2015,6,20,9)
@@ -44,7 +44,7 @@ ga('send', 'pageview');
             self.response.write(
 '''<p class="l">距离直升考开始还有<span class="rxxl">''' + str((helicoptertime-chinatime).days) + '''</span>天<span class="rxxl">''' + str(((helicoptertime-chinatime).seconds)//3600) + '''</span>时<span class="rxxl">''' + str((((helicoptertime-chinatime).seconds)//60)%60) + '''</span>分<span class="rxxl">''' + str(((helicoptertime-chinatime).seconds)%60) + '''</span>秒</p>
 ''')
-        if (-2 <= (chinatime-landtime).days <= -1) and (-2 <= (helicoptertime-chinatime).days <= -1) :
+        if ((-2 <= (chinatime-landtime).days <= -1) and (-2 <= (helicoptertime-chinatime).days <= -1)) or ((-2 <= pastdays.days <= -1) and (0 <= reborning.days <= 1)) :
             self.response.write(
 '''<p class="rxxl">祝大家取得好成绩！</p>
 ''')
