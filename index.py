@@ -9,8 +9,8 @@ class MainPage(webapp2.RequestHandler):
             chinatime = datetime.now() + timedelta(hours=+8)
         else:
             chinatime = datetime(2015,4,26,12,29)
-        helicoptertime = datetime(2015,4,25,8) #hour is guessed
-        landtime = datetime(2015,4,26,12) #hour is guessed
+        helicoptertime = datetime(2015,4,25,8,20)
+        landtime = datetime(2015,4,26,9,50)
         dietime = datetime(2015,6,20,9)
         reborntime = datetime(2015,6,21,17,30)
         leftdays = dietime-chinatime
