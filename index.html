@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name=viewport content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<title>2015深圳中考倒计时</title>
+<style type="text/css">
+.l{font-size:large}.rxxl{font-size:xx-large;color:#f00}.rl{font-size:large;color:#f00}
+</style>
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-16653627-12', 'auto');
+ga('send', 'pageview');
+</script>
+</head>
+<body>
+<div style="text-align:center">
+<h1>2015年深圳实验学校<del style="font-size:xx-small">直升考</del>两部联考和<abbr title="深圳市2015年高中阶段学校招生考试">2015年深圳中考</abbr>的倒计时</h1>
+{% if to_departure.days >= 0 %}
+<p class="l">距离直升考开始还有<span class="rxxl">{{to_departure.days}}</span>天<span class="rxxl">{{(to_departure.seconds)//3600}}</span>时<span class="rxxl">{{((to_departure.seconds)//60) % 60}}</span>分<span class="rxxl">{{(to_departure.seconds) % 60}}</span>秒</p>
+{% endif %}
+{% if ((-2 <= to_land.days <= -1) and (0 <= flying.days <= 1)) or ((-2 <= pastdays.days <= -1) and (0 <= reborning.days <= 1)) %}
+<p class="rxxl">祝大家取得好成绩！</p>
+{% endif %}
+{% if flying.days >= 0 %}
+<p class="l">距离直升考结束还有<span class="rxxl">{{flying.days}}</span>天<span class="rxxl">{{(flying.seconds)//3600}}</span>时<span class="rxxl">{{((flying.seconds)//60) % 60}}</span>分<span class="rxxl">{{(flying.seconds) % 60}}</span>秒</p>
+{% endif %}
+{% if leftdays.days >= 0 %}
+<p class="l">距离中考开始还有<span class="rxxl">{{leftdays.days}}</span>天<span class="rxxl">{{(leftdays.seconds)//3600}}</span>时<span class="rxxl">{{((leftdays.seconds)//60) % 60}}</span>分<span class="rxxl">{{leftdays.seconds % 60}}</span>秒</p>
+{% endif %}
+{% if reborning.days >= 0 %}
+<p class="l">距离中考结束还有<span class="rxxl">{{reborning.days}}</span>天<span class="rxxl">{{(reborning.seconds)//3600}}</span>时<span class="rxxl">{{((reborning.seconds)//60) % 60}}</span>分<span class="rxxl">{{(reborning.seconds) % 60}}</span>秒</p>
+{% endif %}
+{% if pastdays.days >= 0 %}
+<p class="l">中考已经过去了<span class="rxxl">{{pastdays.days}}</span>天<span class="rxxl">{{(pastdays.seconds)//3600}}</span>时<span class="rxxl">{{((pastdays.seconds)//60) % 60}}</span>分<span class="rxxl">{{(pastdays.seconds) % 60}}</span>秒</p>
+{% endif %}
+{% if to_land.days >= 0 %}
+<p class="l">直升考已经过去了<span class="rxxl">{{to_land.days}}</span>天<span class="rxxl">{{(to_land.seconds)//3600}}</span>时<span class="rxxl">{{((to_land.seconds)//60) % 60}}</span>分<span class="rxxl">{{(to_land.seconds) % 60}}</span>秒</p>
+{% endif %}
+<div style="font-size:xx-small">
+<a target="_blank" href="https://github.com/zsdtj/sz2015zkcountdown">源码见此</a>
+</div>
+{% if DEBUG %}
+<p>to_departure.days: {{to_departure.days}}</p>
+<p>to_land.days: {{to_land.days}}</p>
+<p>pastdays.days: {{pastdays.days}}</p>
+<p>flying.days: {{flying.days}}</p>
+<p>leftdays.days: {{leftdays.days}}</p>
+<p>reborning.days: {{reborning.days}}</p>
+<p>pastdays.days: {{pastdays.days}}</p>
+<p>to_land.days: {{to_land.days}}</p>
+{% endif %}
+</div>
+</body>
+</html>
