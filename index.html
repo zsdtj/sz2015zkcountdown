@@ -18,7 +18,7 @@ ga('send', 'pageview');
 </head>
 <body>
 <div style="text-align:center">
-<h1>2015年深圳实验学校<del style="font-size:xx-small">直升考</del>两部联考和<abbr title="深圳市2015年高中阶段学校招生考试">2015年深圳中考</abbr>的倒计时</h1>
+<h1>2015年深圳实验学校2015届初三年级<del style="font-size:xx-small">直升考</del>两部联考和<abbr title="深圳市2015年高中阶段学校招生考试">2015年深圳中考</abbr>的倒计时</h1>
 {% if to_departure.days >= 0 %}
 <p class="l">距离直升考开始还有<span class="rxxl">{{to_departure.days}}</span>天<span class="rxxl">{{(to_departure.seconds)//3600}}</span>时<span class="rxxl">{{((to_departure.seconds)//60) % 60}}</span>分<span class="rxxl">{{(to_departure.seconds) % 60}}</span>秒</p>
 {% endif %}
