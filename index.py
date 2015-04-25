@@ -49,7 +49,7 @@ ga('send', 'pageview');
             self.response.write(
                 '''<p class="l">距离直升考开始还有<span class="rxxl">''' + str(departuredays.days) + '''</span>天<span class="rxxl">''' + str((departuredays.seconds)//3600) + '''</span>时<span class="rxxl">''' + str(((departuredays.seconds)//60) % 60) + '''</span>分<span class="rxxl">''' + str((departuredays.seconds) % 60) + '''</span>秒</p>
 ''')
-        if ((-2 <= landdays.days <= -1) and (-2 <= departuredays.days <= -1)) or ((-2 <= pastdays.days <= -1) and (0 <= reborning.days <= 1)):
+        if ((-2 <= landdays.days <= -1) and (0 <= flying.days <= 1)) or ((-2 <= pastdays.days <= -1) and (0 <= reborning.days <= 1)):
             self.response.write(
                 '''<p class="rxxl">祝大家取得好成绩！</p>
 ''')
