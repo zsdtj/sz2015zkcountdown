@@ -63,11 +63,11 @@ ga('send', 'pageview');
 ''')
         if reborning.days >= 0:
             self.response.write(
-                '''<p class="l">距离中考结束还有<span class="rxxl">''' + str((reborning).days) + '''</span>天<span class="rxxl">''' + str((reborning.seconds)//3600) + '''</span>时<span class="rxxl">''' + str(((reborning.seconds)//60) % 60) + '''</span>分<span class="rxxl">''' + str((reborning.seconds) % 60) + '''</span>秒</p>
+                '''<p class="l">距离中考结束还有<span class="rxxl">''' + str(reborning.days) + '''</span>天<span class="rxxl">''' + str((reborning.seconds)//3600) + '''</span>时<span class="rxxl">''' + str(((reborning.seconds)//60) % 60) + '''</span>分<span class="rxxl">''' + str((reborning.seconds) % 60) + '''</span>秒</p>
 ''')
         if pastdays.days >= 0:
             self.response.write(
-                '''<p class="l">中考已经过去了<span class="rxxl">''' + str((pastdays).days) + '''</span>天<span class="rxxl">''' + str((pastdays.seconds)//3600) + '''</span>时<span class="rxxl">''' + str(((pastdays.seconds)//60) % 60) + '''</span>分<span class="rxxl">''' + str((pastdays.seconds) % 60) + '''</span>秒</p>
+                '''<p class="l">中考已经过去了<span class="rxxl">''' + str(pastdays.days) + '''</span>天<span class="rxxl">''' + str((pastdays.seconds)//3600) + '''</span>时<span class="rxxl">''' + str(((pastdays.seconds)//60) % 60) + '''</span>分<span class="rxxl">''' + str((pastdays.seconds) % 60) + '''</span>秒</p>
 ''')
         if landdays.days >= 0:
             self.response.write(
