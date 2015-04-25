@@ -18,9 +18,9 @@ class MainPage(webapp2.RequestHandler):
         pastdays = chinatime-reborntime
         helicoptertime = datetime(2015, 4, 25, 8, 20)
         landtime = datetime(2015, 4, 26, 9, 50)
-        departuredays = helicoptertime-chinatime
+        to_departure = helicoptertime-chinatime
         flying = landtime-chinatime
-        landdays = chinatime-landtime
+        to_land = chinatime-landtime
         self.response.headers['Content-Type'] = 'text/html'
         self.response.write(
             '''<!DOCTYPE html>
@@ -45,11 +45,11 @@ ga('send', 'pageview');
 <div style="text-align:center">
 <h1>2015年深圳实验学校<del style="font-size:xx-small">直升考</del>两部联考和<abbr title="深圳市2015年高中阶段学校招生考试">2015年深圳中考</abbr>的倒计时</h1>
 ''')
-        if departuredays.days >= 0:
+        if to_departure.days >= 0:
             self.response.write(
-                '''<p class="l">距离直升考开始还有<span class="rxxl">''' + str(departuredays.days) + '''</span>天<span class="rxxl">''' + str((departuredays.seconds)//3600) + '''</span>时<span class="rxxl">''' + str(((departuredays.seconds)//60) % 60) + '''</span>分<span class="rxxl">''' + str((departuredays.seconds) % 60) + '''</span>秒</p>
+                '''<p class="l">距离直升考开始还有<span class="rxxl">''' + str(to_departure.days) + '''</span>天<span class="rxxl">''' + str((to_departure.seconds)//3600) + '''</span>时<span class="rxxl">''' + str(((to_departure.seconds)//60) % 60) + '''</span>分<span class="rxxl">''' + str((to_departure.seconds) % 60) + '''</span>秒</p>
 ''')
-        if ((-2 <= landdays.days <= -1) and (0 <= flying.days <= 1)) or ((-2 <= pastdays.days <= -1) and (0 <= reborning.days <= 1)):
+        if ((-2 <= to_land.days <= -1) and (0 <= flying.days <= 1)) or ((-2 <= pastdays.days <= -1) and (0 <= reborning.days <= 1)):
             self.response.write(
                 '''<p class="rxxl">祝大家取得好成绩！</p>
 ''')
@@ -69,9 +69,9 @@ ga('send', 'pageview');
             self.response.write(
                 '''<p class="l">中考已经过去了<span class="rxxl">''' + str(pastdays.days) + '''</span>天<span class="rxxl">''' + str((pastdays.seconds)//3600) + '''</span>时<span class="rxxl">''' + str(((pastdays.seconds)//60) % 60) + '''</span>分<span class="rxxl">''' + str((pastdays.seconds) % 60) + '''</span>秒</p>
 ''')
-        if landdays.days >= 0:
+        if to_land.days >= 0:
             self.response.write(
-                '''<p class="l">直升考已经过去了<span class="rxxl">''' + str(landdays.days) + '''</span>天<span class="rxxl">''' + str((landdays.seconds)//3600) + '''</span>时<span class="rxxl">''' + str(((landdays.seconds)//60) % 60) + '''</span>分<span class="rxxl">''' + str((landdays.seconds) % 60) + '''</span>秒</p>
+                '''<p class="l">直升考已经过去了<span class="rxxl">''' + str(to_land.days) + '''</span>天<span class="rxxl">''' + str((to_land.seconds)//3600) + '''</span>时<span class="rxxl">''' + str(((to_land.seconds)//60) % 60) + '''</span>分<span class="rxxl">''' + str((to_land.seconds) % 60) + '''</span>秒</p>
 ''')
         self.response.write(
             '''<div style="font-size:xx-small">
@@ -80,14 +80,14 @@ ga('send', 'pageview');
 ''')
         if DEBUG == 1:
             self.response.write(
-                '''<p>departuredays.days: ''' + str(departuredays.days) + '''</p>
-<p>landdays.days: ''' + str(landdays.days) + '''</p>
+                '''<p>to_departure.days: ''' + str(to_departure.days) + '''</p>
+<p>to_land.days: ''' + str(to_land.days) + '''</p>
 <p>pastdays.days: ''' + str(pastdays.days) + '''</p>
 <p>flying.days: ''' + str(flying.days) + '''</p>
 <p>leftdays.days: ''' + str(leftdays.days) + '''</p>
 <p>reborning.days: ''' + str(reborning.days) + '''</p>
 <p>pastdays.days: ''' + str(pastdays.days) + '''</p>
-<p>landdays.days: ''' + str(landdays.days) + '''</p>
+<p>to_land.days: ''' + str(to_land.days) + '''</p>
 ''')
         self.response.write(
             '''</div>
