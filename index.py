@@ -19,21 +19,15 @@ class MainPage(webapp2.RequestHandler):
             chinatime = datetime(2015, 6, 21, 9, 29)
         dietime = datetime(2015, 6, 20, 9)
         reborntime = datetime(2015, 6, 21, 17, 30)
-        leftdays = dietime-chinatime
-        reborning = reborntime-chinatime
-        pastdays = chinatime-reborntime
         helicoptertime = datetime(2015, 4, 25, 8, 20)
         landtime = datetime(2015, 4, 26, 9, 50)
-        to_departure = helicoptertime-chinatime
-        flying = landtime-chinatime
-        to_land = chinatime-landtime
         template_values = {
-            'to_departure': to_departure,
-            'to_land': to_land,
-            'flying': flying,
-            'leftdays': leftdays,
-            'reborning': reborning,
-            'pastdays': pastdays,
+            'leftdays': dietime-chinatime,
+            'reborning': reborntime-chinatime,
+            'pastdays': chinatime-reborntime,
+            'to_departure': helicoptertime-chinatime,
+            'flying': landtime-chinatime,
+            'to_land': chinatime-landtime,
         }
 
         template = JINJA_ENVIRONMENT.get_template('index.html')
