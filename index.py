@@ -12,6 +12,9 @@ JINJA_ENVIRONMENT = jinja2.Environment(
 
 
 class MainPage(webapp2.RequestHandler):
+    def head(self):
+        self.get
+
     def get(self):
         DEBUG = 0
         if DEBUG == 0:
