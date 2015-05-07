@@ -6,7 +6,8 @@ import webapp2
 import jinja2
 
 JINJA_ENVIRONMENT = jinja2.Environment(
-    loader=jinja2.FileSystemLoader(os.path.dirname(__file__))
+    loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
+    trim_blocks=True
     )
 
 
