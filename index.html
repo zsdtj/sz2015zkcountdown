@@ -30,6 +30,9 @@ ga('send', 'pageview');
 {% if flying.days >= 0 %}
 <p class="l">距离直升考结束还有<span class="rxxl">{{flying.days}}</span>天<span class="rxxl">{{(flying.seconds)//3600}}</span>时<span class="rxxl">{{((flying.seconds)//60) % 60}}</span>分<span class="rxxl">{{(flying.seconds) % 60}}</span>秒</p>
 {% endif %}
+{% if to_run.days >= 0 %}
+<p class="l">距离体育中考上车还有<span class="rxxl">{{to_run.days}}</span>天<span class="rxxl">{{(to_run.seconds)//3600}}</span>时<span class="rxxl">{{((to_run.seconds)//60) % 60}}</span>分<span class="rxxl">{{to_run.seconds % 60}}</span>秒</p>
+{% endif %}
 {% if leftdays.days >= 0 %}
 <p class="l">距离中考开始还有<span class="rxxl">{{leftdays.days}}</span>天<span class="rxxl">{{(leftdays.seconds)//3600}}</span>时<span class="rxxl">{{((leftdays.seconds)//60) % 60}}</span>分<span class="rxxl">{{leftdays.seconds % 60}}</span>秒</p>
 {% endif %}
@@ -54,6 +57,7 @@ ga('send', 'pageview');
 <p>reborning.days: {{reborning.days}}</p>
 <p>pastdays.days: {{pastdays.days}}</p>
 <p>to_land.days: {{to_land.days}}</p>
+<p>to_run.days: {{to_run.days}}</p>
 {% endif %}
 </div>
 </body>
