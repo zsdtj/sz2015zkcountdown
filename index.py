@@ -26,6 +26,7 @@ class MainPage(webapp2.RequestHandler):
         helicoptertime = datetime(2015, 4, 25, 8, 20)
         landtime = datetime(2015, 4, 26, 9, 50)
         template_values = {
+            'DEBUG': DEBUG,
             'leftdays': dietime-chinatime,
             'reborning': reborntime-chinatime,
             'pastdays': chinatime-reborntime,
