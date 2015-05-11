@@ -20,12 +20,13 @@ class MainPage(webapp2.RequestHandler):
         if DEBUG == 0:
             chinatime = datetime.now() + timedelta(hours=+8)
         else:
-            chinatime = datetime(2015, 5, 8, 9, 29)
+            chinatime = datetime(2015, 5, 10, 9, 29)
         dietime = datetime(2015, 6, 20, 9)
         reborntime = datetime(2015, 6, 21, 17, 30)
         helicoptertime = datetime(2015, 4, 25, 8, 20)
         landtime = datetime(2015, 4, 26, 9, 50)
-        runtime = datetime(2015, 5, 10, 9, 15)  # Bus of Class 10 start time
+        bustime = datetime(2015, 5, 10, 9, 15)  # Bus of Class 10 depart time
+        returntime = datetime(2015, 5, 10, 12, 20)  # Approximate time. I forgot to log the time we got on the bus at Hongling
 
         template_values = {
             'DEBUG': DEBUG,
@@ -34,8 +35,10 @@ class MainPage(webapp2.RequestHandler):
             'pastdays': chinatime-reborntime,
             'to_departure': helicoptertime-chinatime,
             'flying': landtime-chinatime,
-            'to_land': chinatime-landtime,
-            'to_run': runtime-chinatime
+            'have_land': chinatime-landtime,
+            'to_bus': bustime-chinatime,
+            'running': returntime-chinatime,
+            'have_return': chinatime-returntime
         }
 
         template = JINJA_ENVIRONMENT.get_template('index.html')
