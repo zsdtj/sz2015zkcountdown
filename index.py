@@ -20,7 +20,7 @@ class MainPage(webapp2.RequestHandler):
         if DEBUG == 0:
             chinatime = datetime.now() + timedelta(hours=+8)
         else:
-            chinatime = datetime(2015, 5, 10, 9, 29)
+            chinatime = datetime(2015, 5, 9, 8, 29)
         dietime = datetime(2015, 6, 20, 9)
         reborntime = datetime(2015, 6, 21, 17, 30)
         helicoptertime = datetime(2015, 4, 25, 8, 20)
@@ -28,18 +28,23 @@ class MainPage(webapp2.RequestHandler):
         bustime = datetime(2015, 5, 10, 9, 15)  # Bus of Class 10 depart time
         returntime = datetime(2015, 5, 10, 12, 20)
         # Approximate time. I forgot to log the time we got on the bus at Hongling
+        listentime = datetime(2015, 5, 16, 8, 30)  # The First Test start time
+        throwtime = datetime(2015, 5, 16, 17, 50)  # The Last Test end time. Guessed
 
         template_values = {
             'DEBUG': DEBUG,
-            'leftdays': dietime-chinatime,
-            'reborning': reborntime-chinatime,
-            'pastdays': chinatime-reborntime,
             'to_departure': helicoptertime-chinatime,
             'flying': landtime-chinatime,
             'have_land': chinatime-landtime,
             'to_bus': bustime-chinatime,
             'running': returntime-chinatime,
-            'have_return': chinatime-returntime
+            'have_return': chinatime-returntime,
+            'to_listen': listentime-chinatime,
+            'listening': throwtime-chinatime,
+            'have_spoken': chinatime-throwtime,
+            'leftdays': dietime-chinatime,
+            'reborning': reborntime-chinatime,
+            'pastdays': chinatime-reborntime,
         }
 
         template = JINJA_ENVIRONMENT.get_template('index.html')

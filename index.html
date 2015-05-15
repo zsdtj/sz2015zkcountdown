@@ -20,7 +20,7 @@ ga('send', 'pageview');
 </head>
 <body>
 <div style="text-align:center">
-<h1>2015年<abbr title="深圳市2015年高中阶段学校招生考试">深圳中考</abbr>和深圳实验学校2015届初三年级<del style="font-size:xx-small">直升考</del>两部联考的倒计时</h1>
+<h1>2015年<abbr title="深圳市2015年高中阶段学校招生考试">深圳中考</abbr>和<abbr title="直升考">深圳实验学校2015届初三年级两部联考</abbr>的倒计时</h1>
 {% if to_departure.days >= 0 %}
 <p class="l">距离直升考开始还有
 <span class="rxxl">{{to_departure.days}}</span>天
@@ -30,6 +30,7 @@ ga('send', 'pageview');
 {% endif %}
 {% if ((-2 <= have_land.days <= -1) and (0 <= flying.days <= 1))
  or ((-2 <= have_return.days <= -1) and (running.days == 0))
+ or ((have_spoken.days == -1) and (listening.days == 0))
  or ((-2 <= pastdays.days <= -1) and (0 <= reborning.days <= 1)) %}
 <p class="rxxl">祝大家取得好成绩！</p>
 {% endif %}
@@ -54,6 +55,20 @@ ga('send', 'pageview');
 <span class="rxxl">{{((running.seconds)//60) % 60}}</span>分
 <span class="rxxl">{{running.seconds % 60}}</span>秒</p>
 {% endif %}
+{% if to_listen.days >= 0 %}
+<p class="l">距离听说考试第一场开始还有
+<span class="rxxl">{{to_listen.days}}</span>天
+<span class="rxxl">{{(to_listen.seconds)//3600}}</span>时
+<span class="rxxl">{{((to_listen.seconds)//60) % 60}}</span>分
+<span class="rxxl">{{(to_listen.seconds) % 60}}</span>秒</p>
+{% endif %}
+{% if listening.days >= 0 %}
+<p class="l">距离听说考试第八场结束还有
+<span class="rxxl">{{listening.days}}</span>天
+<span class="rxxl">{{(listening.seconds)//3600}}</span>时
+<span class="rxxl">{{((listening.seconds)//60) % 60}}</span>分
+<span class="rxxl">{{(listening.seconds) % 60}}</span>秒</p>
+{% endif %}
 {% if leftdays.days >= 0 %}
 <p class="l">距离中考开始还有
 <span class="rxxl">{{leftdays.days}}</span>天
@@ -74,6 +89,13 @@ ga('send', 'pageview');
 <span class="rxxl">{{(pastdays.seconds)//3600}}</span>时
 <span class="rxxl">{{((pastdays.seconds)//60) % 60}}</span>分
 <span class="rxxl">{{(pastdays.seconds) % 60}}</span>秒</p>
+{% endif %}
+{% if have_spoken.days >= 0 %}
+<p class="l">听说考试已经过去了
+<span class="rxxl">{{have_spoken.days}}</span>天
+<span class="rxxl">{{(have_spoken.seconds)//3600}}</span>时
+<span class="rxxl">{{((have_spoken.seconds)//60) % 60}}</span>分
+<span class="rxxl">{{(have_spoken.seconds) % 60}}</span>秒</p>
 {% endif %}
 {% if have_return.days >= 0 %}
 <p class="l">体育中考已经过去了
@@ -99,6 +121,9 @@ ga('send', 'pageview');
 <p>to_bus.days: {{to_bus.days}}</p>
 <p>running.days: {{running.days}}</p>
 <p>have_return.days: {{have_return.days}}</p>
+<p>to_listen.days: {{to_listen.days}}</p>
+<p>listening.days: {{listening.days}}</p>
+<p>have_spoken.days: {{have_spoken.days}}</p>
 <p>leftdays.days: {{leftdays.days}}</p>
 <p>reborning.days: {{reborning.days}}</p>
 <p>pastdays.days: {{pastdays.days}}</p>
