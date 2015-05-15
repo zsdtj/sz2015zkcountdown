@@ -20,7 +20,7 @@ class MainPage(webapp2.RequestHandler):
         if DEBUG == 0:
             chinatime = datetime.now() + timedelta(hours=+8)
         else:
-            chinatime = datetime(2015, 5, 9, 8, 29)
+            chinatime = datetime(2015, 5, 16, 1, 29)
         dietime = datetime(2015, 6, 20, 9)
         reborntime = datetime(2015, 6, 21, 17, 30)
         helicoptertime = datetime(2015, 4, 25, 8, 20)
