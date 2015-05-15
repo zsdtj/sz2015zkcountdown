@@ -29,8 +29,8 @@ ga('send', 'pageview');
 <span class="rxxl">{{(to_departure.seconds) % 60}}</span>秒</p>
 {% endif %}
 {% if ((-2 <= have_land.days <= -1) and (0 <= flying.days <= 1))
- or ((-2 <= pastdays.days <= -1) and (0 <= reborning.days <= 1)) 
- or ((-2 <= have_return.days <= -1) and (0 <= running.days <= 1)) %}
+ or ((-2 <= have_return.days <= -1) and (running.days == 0))
+ or ((-2 <= pastdays.days <= -1) and (0 <= reborning.days <= 1)) %}
 <p class="rxxl">祝大家取得好成绩！</p>
 {% endif %}
 {% if flying.days >= 0 %}

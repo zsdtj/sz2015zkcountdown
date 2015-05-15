@@ -26,7 +26,8 @@ class MainPage(webapp2.RequestHandler):
         helicoptertime = datetime(2015, 4, 25, 8, 20)
         landtime = datetime(2015, 4, 26, 9, 50)
         bustime = datetime(2015, 5, 10, 9, 15)  # Bus of Class 10 depart time
-        returntime = datetime(2015, 5, 10, 12, 20)  # Approximate time. I forgot to log the time we got on the bus at Hongling
+        returntime = datetime(2015, 5, 10, 12, 20)
+        # Approximate time. I forgot to log the time we got on the bus at Hongling
 
         template_values = {
             'DEBUG': DEBUG,
