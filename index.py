@@ -29,7 +29,10 @@ class MainPage(webapp2.RequestHandler):
         returntime = datetime(2015, 5, 10, 12, 20)
         # Approximate time. I forgot to log the time we got on the bus at Hongling
         listentime = datetime(2015, 5, 16, 8, 30)  # The First Test start time
-        throwtime = datetime(2015, 5, 16, 17, 50)  # The Last Test end time. Guessed
+        throwtime = datetime(2015, 5, 16, 17, 45)  # The Last Test end time. Guessed
+        # It starts at 17:30
+        # The test finish approximately 12min after it start.
+        # But I was allowed to exit 15min after it start.
 
         template_values = {
             'DEBUG': DEBUG,
