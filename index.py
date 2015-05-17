@@ -30,9 +30,12 @@ class MainPage(webapp2.RequestHandler):
         # Approximate time. I forgot to log the time we got on the bus at Hongling
         listentime = datetime(2015, 5, 16, 8, 30)  # The First Test start time
         throwtime = datetime(2015, 5, 16, 17, 45)  # The Last Test end time. Guessed
-        # It starts at 17:30
-        # The test finish approximately 12min after it start.
+        # It started at 17:30
+        # The test finished approximately 12min after it started.
         # But I was allowed to exit 15min after it start.
+        # Actually, this test lasted for two days.
+        # But my school finished it the first day,
+        # and I don't know the schedule for the second day.
 
         template_values = {
             'DEBUG': DEBUG,
