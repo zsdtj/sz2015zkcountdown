@@ -83,6 +83,20 @@ ga('send', 'pageview');
 <span class="rxxl">{{((reborning.seconds)//60) % 60}}</span>分
 <span class="rxxl">{{(reborning.seconds) % 60}}</span>秒</p>
 {% endif %}
+{% if to_score.days >= 0 %}
+<p class="l">距离中考成绩公布还有
+<span class="rxxl">{{to_score.days}}</span>天
+<span class="rxxl">{{(to_score.seconds)//3600}}</span>时
+<span class="rxxl">{{((to_score.seconds)//60) % 60}}</span>分
+<span class="rxxl">{{to_score.seconds % 60}}</span>秒</p>
+{% endif %}
+{% if scored.days >= 0 %}
+<p class="l">中考成绩已经公布了
+<span class="rxxl">{{scored.days}}</span>天
+<span class="rxxl">{{(scored.seconds)//3600}}</span>时
+<span class="rxxl">{{((scored.seconds)//60) % 60}}</span>分
+<span class="rxxl">{{(scored.seconds) % 60}}</span>秒</p>
+{% endif %}
 {% if pastdays.days >= 0 %}
 <p class="l">中考已经过去了
 <span class="rxxl">{{pastdays.days}}</span>天
