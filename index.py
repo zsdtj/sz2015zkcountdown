@@ -36,7 +36,7 @@ class MainPage(webapp2.RequestHandler):
         # Actually, this test lasted for two days.
         # But my school finished it the first day,
         # and I don't know the schedule for the second day.
-        scoretime = datetime(2015, 7, 8, 18, 0)  #This is the time Shenzhen Enrolment and Examination Office send SMS.
+        scoretime = datetime(2015, 7, 8, 12, 0)  #This is the time Shenzhen Enrolment and Examination Office send SMS.
 
         template_values = {
             'DEBUG': DEBUG,
