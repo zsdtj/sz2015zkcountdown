@@ -16,8 +16,8 @@ class MainPage(webapp2.RequestHandler):
         self.get
 
     def get(self):
-        DEBUG = 0
-        if DEBUG == 0:
+        debug = 0
+        if debug == 0:
             chinatime = datetime.now() + timedelta(hours=+8)
         else:
             chinatime = datetime(2015, 5, 16, 1, 29)
@@ -32,14 +32,17 @@ class MainPage(webapp2.RequestHandler):
         throwtime = datetime(2015, 5, 16, 17, 45)  # The Last Test end time. Guessed
         # It started at 17:30
         # The test finished approximately 12min after it started.
-        # But I was allowed to exit 15min after it start.
+        # But I was allowed to exit 15min after it started.
         # Actually, this test lasted for two days.
         # But my school finished it the first day,
         # and I don't know the schedule for the second day.
-        scoretime = datetime(2015, 7, 8, 12, 0)  #This is the time Shenzhen Enrolment and Examination Office send SMS.
+        scoretime = datetime(2015, 7, 8, 12, 0)
+        # Shenzhen Enrolment and Examination Office began to send SMS at about 11:00.
+        # The page is open at 11:45? Or 11:40?
+        # No matter how, I failed it.
 
         template_values = {
-            'DEBUG': DEBUG,
+            'debug': debug,
             'to_departure': helicoptertime-chinatime,
             'flying': landtime-chinatime,
             'have_land': chinatime-landtime,
@@ -62,3 +65,11 @@ class MainPage(webapp2.RequestHandler):
 application = webapp2.WSGIApplication([
     ('/', MainPage),
 ], debug=True)
+
+# This "application", is based on a badly written one I wrote in 2012
+# (Primary 6). After using the jinja2 template engine, I made tons of ugly
+# ifes to make words show up correctly. This application might not get updated
+# anymore.
+# I got the ever worst score since my graduation of primary. But, it's the most
+# important one. My junior high life, just ended, in such.
+# All have gone, let them go.
