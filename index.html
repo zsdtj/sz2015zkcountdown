@@ -90,6 +90,20 @@ ga('send', 'pageview');
 <span class="rxxl">{{((to_score.seconds)//60) % 60}}</span>分
 <span class="rxxl">{{to_score.seconds % 60}}</span>秒</p>
 {% endif %}
+{% if to_firstline.days >= 0 %}
+<p class="l">距离第一批录取标准公布还有
+<span class="rxxl">{{to_firstline.days}}</span>天
+<span class="rxxl">{{(to_firstline.seconds)//3600}}</span>时
+<span class="rxxl">{{((to_firstline.seconds)//60) % 60}}</span>分
+<span class="rxxl">{{to_firstline.seconds % 60}}</span>秒</p>
+{% endif %}
+{% if firstlined.days >= 0 %}
+<p class="l">第一批录取标准公布已经公布了
+<span class="rxxl">{{firstlined.days}}</span>天
+<span class="rxxl">{{(firstlined.seconds)//3600}}</span>时
+<span class="rxxl">{{((firstlined.seconds)//60) % 60}}</span>分
+<span class="rxxl">{{(firstlined.seconds) % 60}}</span>秒</p>
+{% endif %}
 {% if scored.days >= 0 %}
 <p class="l">中考成绩已经公布了
 <span class="rxxl">{{scored.days}}</span>天
@@ -143,6 +157,8 @@ ga('send', 'pageview');
 <p>pastdays.days: {{pastdays.days}}</p>
 <p>to_score.days: {{to_score.days}}</p>
 <p>scored.days: {{scored.days}}</p>
+<p>to_firstline.days: {{to_firstline.days}}</p>
+<p>firstlined.days: {{firstlined.days}}</p>
 {% endif %}
 </div>
 </body>

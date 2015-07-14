@@ -40,6 +40,10 @@ class MainPage(webapp2.RequestHandler):
         # Shenzhen Enrolment and Examination Office began to send SMS at about 11:00.
         # The page is open at 11:45? Or 11:40?
         # No matter how, I failed it.
+        firstlinetime = datetime(2015, 7, 14, 11, 0)
+        # http://www.51a.gov.cn/show.asp?id=4838
+        # Keep for reference: "special ability" student list:
+        # http://www.51a.gov.cn/show.asp?id=4836
 
         template_values = {
             'debug': debug,
@@ -56,7 +60,9 @@ class MainPage(webapp2.RequestHandler):
             'reborning': reborntime-chinatime,
             'pastdays': chinatime-reborntime,
             'to_score': scoretime-chinatime,
-            'scored': chinatime-scoretime
+            'scored': chinatime-scoretime,
+            'to_firstline': firstlinetime-chinatime,
+            'firstlined': chinatime-firstlinetime
         }
 
         template = JINJA_ENVIRONMENT.get_template('index.html')
@@ -68,8 +74,7 @@ application = webapp2.WSGIApplication([
 
 # This "application", is based on a badly written one I wrote in 2012
 # (Primary 6). After using the jinja2 template engine, I made tons of ugly
-# ifes to make words show up correctly. This application might not get updated
-# anymore.
+# ifes to make words show up correctly.
 # I got the ever worst score since my graduation of primary. But, it's the most
 # important one. My junior high life, just ended, in such.
 # All have gone, let them go.
