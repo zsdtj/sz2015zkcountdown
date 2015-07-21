@@ -44,6 +44,8 @@ class MainPage(webapp2.RequestHandler):
         # http://www.51a.gov.cn/show.asp?id=4838
         # Keep for reference: "special ability" student list:
         # http://www.51a.gov.cn/show.asp?id=4836
+        secondlinetime = datetime(2015, 7, 17, 15, 0)
+        # http://www.51a.gov.cn/show.asp?id=4849
 
         template_values = {
             'debug': debug,
@@ -62,7 +64,9 @@ class MainPage(webapp2.RequestHandler):
             'to_score': scoretime-chinatime,
             'scored': chinatime-scoretime,
             'to_firstline': firstlinetime-chinatime,
-            'firstlined': chinatime-firstlinetime
+            'firstlined': chinatime-firstlinetime,
+            'to_secondline': secondlinetime-chinatime,
+            'secondlined': secondlinetime-chinatime
         }
 
         template = JINJA_ENVIRONMENT.get_template('index.html')

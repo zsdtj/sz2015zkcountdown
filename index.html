@@ -97,6 +97,20 @@ ga('send', 'pageview');
 <span class="rxxl">{{((to_firstline.seconds)//60) % 60}}</span>分
 <span class="rxxl">{{to_firstline.seconds % 60}}</span>秒</p>
 {% endif %}
+{% if to_secondline.days >= 0 %}
+<p class="l">距离第二批录取标准公布还有
+<span class="rxxl">{{to_secondline.days}}</span>天
+<span class="rxxl">{{(to_secondline.seconds)//3600}}</span>时
+<span class="rxxl">{{((to_secondline.seconds)//60) % 60}}</span>分
+<span class="rxxl">{{to_secondline.seconds % 60}}</span>秒</p>
+{% endif %}
+{% if secondlined.days >= 0 %}
+<p class="l">第二批录取标准公布已经公布了
+<span class="rxxl">{{secondlined.days}}</span>天
+<span class="rxxl">{{(secondlined.seconds)//3600}}</span>时
+<span class="rxxl">{{((secondlined.seconds)//60) % 60}}</span>分
+<span class="rxxl">{{(secondlined.seconds) % 60}}</span>秒</p>
+{% endif %}
 {% if firstlined.days >= 0 %}
 <p class="l">第一批录取标准公布已经公布了
 <span class="rxxl">{{firstlined.days}}</span>天
@@ -159,6 +173,8 @@ ga('send', 'pageview');
 <p>scored.days: {{scored.days}}</p>
 <p>to_firstline.days: {{to_firstline.days}}</p>
 <p>firstlined.days: {{firstlined.days}}</p>
+<p>to_secondline.days: {{to_secondline.days}}</p>
+<p>secondlined.days: {{secondlined.days}}</p>
 {% endif %}
 </div>
 </body>
